@@ -1,0 +1,61 @@
+name: Generate Snake Contributions
+
+on:
+  # ⏰ 定时任务（cron 使用 UTC 时区）
+  # 北京时间每天 00:00 运行 = UTC 每天 16:00 运行
+  schedule:
+    - cron: "0 16 * * *"
+
+  # ✅ 允许手动触发（Actions 页面点 Run workflow）
+  workflow_dispatch:
+
+# 🔐 给工作流写入仓库内容的权限（用于推送到主分支）
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: Build Snake SVG
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1) 📥 拉取仓库代码（为了让后续步骤在正确的工作目录中执行）
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # 2) 🐍 生成贪吃蛇 SVG（仅生成 SVG，速度更快）
+      # 输出到 snake_contributions/ 目录下
+      - name: Generate snake SVG
+        uses: Platane/snk/svg-only@v3
+        with:
+          # 使用当前仓库所有者作为用户名
+          github_user_name: ${{ github.repository_owner }}
+          outputs: |
+            snake_contributions/github-contribution-grid-snake.svg
+            snake_contributions/github-contribution-grid-snake-dark.svg?palette=github-dark
+
+      # 3) 🚀 提交到主分支（把 snake_contributions/ 目录内容推上去）
+      - name: Commit & Push to main
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          # 确保目录存在（通常 action 会自动创建，但这里兜底一下）
+          mkdir -p snake_contributions
+
+          git add snake_contributions/*.svg
+
+          # 没有变更就不提交，避免每天刷 commit
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+
+          git commit -m "chore: update snake contributions"
+          
+          # 先拉取远程最新代码并变基，解决 non-fast-forward 问题
+          git pull --rebase origin main
+          
+          git push origin main
