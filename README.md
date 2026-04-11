@@ -6,7 +6,7 @@
 
 <!-- ========== 头像 + 欢迎语 ========== -->
 <p align="center">
-  <img src="https://github.com/happycola233.png" width="120" height="120" style="border-radius: 50%;" />
+  <img src="./avatar-circle.png" width="120" height="120" />
 </p>
 
 <h1 align="center">👋 Hi there (っ•̀ω•́)っ 🌟</h1>
