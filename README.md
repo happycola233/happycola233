@@ -187,12 +187,33 @@
   </picture>
 </p>
 
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)"
+      srcset="https://github-readme-stats-fast.vercel.app/api/pin/?username=happycola233&repo=BiliTools&theme=github_dark" />
+    <img
+      src="https://github-readme-stats-fast.vercel.app/api/pin/?username=happycola233&repo=BiliTools"
+      alt="Repo Pin: BiliTools"
+    />
+  </picture>
 
-<!-- https://github.com/Ashutosh00710/github-readme-activity-graph -->
-<!-- Activity Graph（活动曲线） -->
+  <picture>
+    <source media="(prefers-color-scheme: dark)"
+      srcset="https://github-readme-stats-fast.vercel.app/api/pin/?username=happycola233&repo=happychat&theme=github_dark" />
+    <img
+      src="https://github-readme-stats-fast.vercel.app/api/pin/?username=happycola233&repo=happychat"
+      alt="Repo Pin: happychat"
+    />
+  </picture>
+</p>
+
+
+<!-- Activity Graph（活动曲线）
+     官方公共实例 github-readme-activity-graph.vercel.app 已因 Vercel 账单暂停（HTTP 402）
+     改为仓库内静态 SVG，由 Actions 每天生成，样式对齐 github-compact -->
 
 <p align="center">
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=happycola233&theme=github-compact&hide_border=true" />
+  <img src="./activity-graph/graph.svg" alt="GitHub Activity Graph" />
 </p>
 
 ---
