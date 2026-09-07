@@ -44,7 +44,7 @@
   
 - **🧑‍💻 GitHub**：happycola233
 - **🎥 Bilibili**：肥宅水水呀
-- **🌱 目前方向**：Python / C++ / Web
+- **📧 Email**：[happycola233@gmail.com](mailto:happycola233@gmail.com)
 - **💡 Motto**：悟已往之不谏，知来者之可追。
 - **🎯 目标**：无限进步！
 </div>
